@@ -21,6 +21,7 @@ include_directories(
 add_library(testModule src/testModule.cpp)
 add_library(crewPlanningModule src/crewPlanning.cpp)
 add_library(transportModule src/transport.cpp)
+add_library(myModule src/myModule.cpp)
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(simple_modules_node

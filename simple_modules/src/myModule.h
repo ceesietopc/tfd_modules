@@ -12,13 +12,18 @@ extern "C" {
 void init(int argc, char** argv);
 VERIFY_INIT_MODULE_DEF(init);
 
-double can_load(const ParameterList & parameterList,
-        predicateCallbackType predicateCallback, numericalFluentCallbackType numericalFluentCallback, int relaxed);
+double can_move(const ParameterList & parameterList,
+        predicateCallbackType predicateCallback,
+        numericalFluentCallbackType numericalFluentCallback,
+        int relaxed);
+VERIFY_CONDITIONCHECKER_DEF(can_move);
 
-VERIFY_CONDITIONCHECKER_DEF(can_load);
-
-//int effectCall(ParameterList & parameterList, predicateCallbackType predicateCallback, numericalFluentCallbackType numericalFluentCallback,
-  //    vector<double>& writtenVars);
+int move(const ParameterList & parameterList,
+    predicateCallbackType predicateCallback,
+    numericalFluentCallbackType numericalFluentCallback,
+    int relaxed,
+    vector<double>& writtenVars);
+VERIFY_APPLYEFFECT_DEF(move);
 
 subplanType genSubplan(const string & operatorName, const ParameterList & parameterList,
         predicateCallbackType predicateCallback, numericalFluentCallbackType numericalFluentCallback, int heuristic);
