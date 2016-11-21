@@ -7,7 +7,7 @@
         pose - object
   )
   (:modules
-    (can_move ?x - number conditionchecker can_move@libmyModule.so)
+    (can_move ?p - pose conditionchecker can_move@libmyModule.so)
 
     ;(can_move
       ;?j0 - number
@@ -54,25 +54,19 @@
 
   (:functions
     (j0) - number
-    ;(j0) (j1) (j2) (j3) (j4) (j5) (j6) - number ; robot joints (current state)
-    (x ?p - pose)  - number
-    (y ?p - pose)  - number
-    (z ?p - pose)  - number
-    (qx ?p - pose) - number
-    (qy ?p - pose) - number
-    (qz ?p - pose) - number
-    (qw ?p - pose) - number
   )
 
   (:durative-action go
-    :parameters (?p - pose); ?x - number)
+    :parameters (?p - pose)
     :duration (= ?duration 1)
     :condition (and
-      ;(at start (= (j0) ?x))
       (at start (not (moving)))
       (at start (pending ?p))
-      ;(at start ([can_move (j0) (j1) (j2) (j3) (j4) (j5) (j6) (x ?p) (y ?p) (z ?p) (qx ?p) (qy ?p) (qz ?p) (qw ?p)]))
-      (at start ([can_move (j0)]))
+      ;(at start (= (j0) ?j0))
+      ;(at start (robot-configuration ?j0))
+      ;(at start (coordinates ?p ?x))
+      ;(at start (robot-configuration ?j0))
+      ;(at start ([can_move ?j0]))
     )
     :effect (and
       (at start (moving))

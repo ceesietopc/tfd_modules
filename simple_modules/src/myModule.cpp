@@ -30,7 +30,7 @@ int move(const ParameterList & parameterList,
     int /* relaxed */,
     vector<double>& writtenVars)
 {
-  ROS_DEBUG("Calling %s module", __func__);
+  ROS_INFO("Calling %s module", __func__);
   return 0;
 }
 

@@ -25,8 +25,11 @@ int move(const ParameterList & parameterList,
     vector<double>& writtenVars);
 VERIFY_APPLYEFFECT_DEF(move);
 
-subplanType genSubplan(const string & operatorName, const ParameterList & parameterList,
-        predicateCallbackType predicateCallback, numericalFluentCallbackType numericalFluentCallback, int heuristic);
+subplanType genSubplan(const string & operatorName,
+    const ParameterList & parameterList,
+    predicateCallbackType predicateCallback,
+    numericalFluentCallbackType numericalFluentCallback,
+    int heuristic);
 VERIFY_SUBPLANGENERATOR_DEF(genSubplan);
 
 /// For final plan output: Convert a subplan into a string.
