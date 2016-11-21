@@ -6,5 +6,6 @@
       (at car1 l1)
   )
   (:goal (and (at car1 l3) ))
+  (:metric minimize (total-time))
 )
 

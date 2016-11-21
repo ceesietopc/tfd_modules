@@ -12,6 +12,8 @@ extern "C" {
 void init(int argc, char** argv);
 VERIFY_INIT_MODULE_DEF(init);
 
+
+
 double can_move(const ParameterList & parameterList,
         predicateCallbackType predicateCallback,
         numericalFluentCallbackType numericalFluentCallback,
@@ -24,6 +26,11 @@ int move(const ParameterList & parameterList,
     int relaxed,
     vector<double>& writtenVars);
 VERIFY_APPLYEFFECT_DEF(move);
+
+void exit_module(const RawPlan& plan, int argc, char* argv[],
+    predicateCallbackType predicateCallback,
+    numericalFluentCallbackType numericalFluentCallback);
+VERIFY_EXIT_MODULE_DEF(exit_module);
 
 subplanType genSubplan(const string & operatorName,
     const ParameterList & parameterList,

@@ -3,6 +3,10 @@ project(simple_modules)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  geometry_msgs
+  moveit_core
+  moveit_ros_planning_interface
+  moveit_msgs
   tfd_modules
 )
 
@@ -23,8 +27,8 @@ add_library(crewPlanningModule src/crewPlanning.cpp)
 add_library(transportModule src/transport.cpp)
 add_library(myModule src/myModule.cpp)
 
-## Specify libraries to link a library or executable target against
-# target_link_libraries(simple_modules_node
-#   ${catkin_LIBRARIES}
-# )
+# Specify libraries to link a library or executable target against
+ target_link_libraries(myModule
+   ${catkin_LIBRARIES}
+ )
 
