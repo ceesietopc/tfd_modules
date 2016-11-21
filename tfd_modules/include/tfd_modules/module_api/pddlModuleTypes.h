@@ -24,6 +24,7 @@ using std::map;
 
 namespace modules
 {
+
 // callback interface typedefs
 typedef std::pair<int, int> VarVal;
 typedef std::tr1::unordered_map<string, VarVal> PredicateMapping;
@@ -63,9 +64,13 @@ class Parameter {
 
 typedef vector<Parameter> ParameterList;
 
+const ParameterList EMPTY_PARAMETER_LIST;
+
 class Predicate {
    public:
-      Predicate(string n, ParameterList pl, bool v = true) : parameters(pl), value(v) { 
+      Predicate(const string& n="",
+          const ParameterList& pl=EMPTY_PARAMETER_LIST,
+          bool v = true) : parameters(pl), value(v) { 
          name = toLower(n);
       }
 
@@ -78,7 +83,10 @@ typedef vector<Predicate> PredicateList;
 
 class NumericalFluent {
    public:
-      NumericalFluent(string n, ParameterList pl, double v = 0.0) : parameters(pl), value(v) { 
+
+      NumericalFluent(const string& n="",
+          const ParameterList& pl=EMPTY_PARAMETER_LIST,
+          double v = 0.0) : parameters(pl), value(v) { 
          name = toLower(n);
       }
 
