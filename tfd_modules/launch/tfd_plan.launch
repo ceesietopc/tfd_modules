@@ -3,7 +3,7 @@
    <arg name="domain" />
    <arg name="problem" />
 
-   <node pkg="tfd_modules" type="tfd_plan" name="tfd_plan" args="$(arg domain) $(arg problem)" required="true">
+   <node pkg="tfd_modules" type="tfd_plan" name="tfd_plan" args="$(arg domain) $(arg problem)" required="true" output="screen">
       <rosparam command="load" file="$(find tfd_modules)/config/tfd_modules_params.yaml" />
    </node>
 

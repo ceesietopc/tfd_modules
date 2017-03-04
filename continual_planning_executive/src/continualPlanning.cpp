@@ -86,7 +86,7 @@ ContinualPlanning::ContinualPlanningState ContinualPlanning::loop()
     std::set<DurativeAction> executedActions;
     // should not be empty (see above), FIXME exec should only exec the first
     _status.startedExecution(_currentPlan.actions.front()); 
-    if(!_planExecutor.executeBlocking(_currentPlan, _currentState, executedActions)) {
+    if(!_planExecutor.executeBlocking(_currentPlan, _currentState, executedActions, _goal)) {
         _status.finishedExecution(false, _currentPlan.actions.front());
         ROS_ERROR_STREAM("No action was executed for current plan:\n" << _currentPlan << "\nWaiting for 10 sec...");
         _forceReplan = true;        // force here in the hope that it fixes something.
@@ -121,7 +121,7 @@ bool ContinualPlanning::executeActionDirectly(const DurativeAction & a, bool pub
     std::set<DurativeAction> executedActions;
     // should not be empty (see above), FIXME exec should only exec the first
     _status.startedExecution(plan.actions.front()); 
-    if(!_planExecutor.executeBlocking(plan, _currentState, executedActions)) {
+    if(!_planExecutor.executeBlocking(plan, _currentState, executedActions, _goal)) {
         _status.finishedExecution(false, plan.actions.front());
         ROS_ERROR_STREAM("No action was executed for current plan:\n" << plan);
         _status.setEnabled(true);

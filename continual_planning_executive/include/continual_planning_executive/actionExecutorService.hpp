@@ -37,7 +37,7 @@ class ActionExecutorService : public continual_planning_executive::ActionExecuto
       virtual bool canExecute(const DurativeAction & a, const SymbolicState & current) const;
 
       /// Executes the action using SimpleActionClient.
-      virtual bool executeBlocking(const DurativeAction & a, SymbolicState & current);
+      virtual bool executeBlocking(const DurativeAction & a, SymbolicState & current, SymbolicState & goalState);
 
       /// Fill the goal to execute this action.
       /**
@@ -114,7 +114,7 @@ bool ActionExecutorService<Service>::canExecute(
 }
 
 template <class Service>
-bool ActionExecutorService<Service>::executeBlocking(const DurativeAction & a, SymbolicState & current)
+bool ActionExecutorService<Service>::executeBlocking(const DurativeAction & a, SymbolicState & current, SymbolicState & goalState)
 {
     Service service;
     if(!fillGoal(service.request, a, current)) {
@@ -137,6 +137,7 @@ bool ActionExecutorService<Service>::executeBlocking(const DurativeAction & a, S
     // blocking call
     bool success = _serviceClient.call(service);
 
+    // Maybe add the goalState here too?
     updateState(success, service.response, a, current);
 
     if(success) {

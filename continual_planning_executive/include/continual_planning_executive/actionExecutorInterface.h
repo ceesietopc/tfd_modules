@@ -33,7 +33,7 @@ namespace continual_planning_executive
              * \param [in, out] currentState the current state, possibly updated by the action.
              * \returns true, if the action was executed successfully.
              */
-            virtual bool executeBlocking(const DurativeAction & a, SymbolicState & currentState) = 0;
+            virtual bool executeBlocking(const DurativeAction & a, SymbolicState & currentState, SymbolicState & goalState) = 0;
 
             // TODO_TP non blocking call with progress ala action lib for temporal/parallel execution
 

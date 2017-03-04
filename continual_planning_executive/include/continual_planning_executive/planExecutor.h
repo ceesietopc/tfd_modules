@@ -16,7 +16,7 @@ class PlanExecutor
         void addActionExecutor(boost::shared_ptr<continual_planning_executive::ActionExecutorInterface> ae);
 
         virtual bool executeBlocking(const Plan & p, SymbolicState & currentState,
-                std::set<DurativeAction> & executedActions);
+                std::set<DurativeAction> & executedActions, SymbolicState & goalState);
 
         /// send a cancel signal to all actions.
         void cancelAllActions();

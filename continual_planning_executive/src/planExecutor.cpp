@@ -42,7 +42,7 @@ void PlanExecutor::addActionExecutor(boost::shared_ptr<continual_planning_execut
 }
 
 bool PlanExecutor::executeBlocking(const Plan & p, SymbolicState & currentState,
-                std::set<DurativeAction> & executedActions)
+                std::set<DurativeAction> & executedActions, SymbolicState & goalState)
 {
     checkActionTimesFile();
 
@@ -67,7 +67,7 @@ bool PlanExecutor::executeBlocking(const Plan & p, SymbolicState & currentState,
                 ROS_INFO_STREAM("Trying to execute action: \"" << da << "\"");
 
                 ros::WallTime startTime = ros::WallTime::now();
-                if(ai->executeBlocking(da, currentState)) {
+                if(ai->executeBlocking(da, currentState, goalState)) {
                     actionsExectued++;
                     ROS_INFO_STREAM("Successfully executed action: \"" << da << "\"");
 
