@@ -142,7 +142,6 @@ template <class Action, class ActionGoal, class ActionResult>
 void ActionExecutorActionlib<Action, ActionGoal, ActionResult>::updateState(
         const actionlib::SimpleClientGoalState &actionReturnState, const ActionResult &result, const DurativeAction &a,
         SymbolicState &current, SymbolicState &goalState) {
-    ROS_INFO("Using redirect to action!");
     this->updateState(actionReturnState, result, a, current);
 }
 
